@@ -27,35 +27,22 @@ function Login() {
   };
   const handleLogin = (e) => {
     e.preventDefault();
-    const regex = new RegExp(
-      `^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*[0-9])(?=.*[a-z]).{8,}$`
-    );
     if (email && values.password) {
-      if (!regex.test(values.password)) {
-        console.log("valid pass true");
-        seterror(true);
-        seterrorMsg(
-          "Password must contain small and capital letters,symbols and numbers "
-        );
-      } else {
-        seterror(false);
-        axios
-          .post(`${process.env.REACT_APP_BASE_URL}/user/signIn`, {
-            email: email,
-            password: values.password,
-          })
-          .then((result) => {
-            console.log(result, "login=======>");
-
-            localStorage.setItem("token", result.data.token);
-            navigate("/home");
-          })
-          .catch((err) => {
-            console.log(err);
-            seterror(true);
-            seterrorMsg("Your credentials did not match please try again");
-          });
-      }
+      axios
+        .post(`${process.env.REACT_APP_BASE_URL}/user/signIn`, {
+          email: email,
+          password: values.password,
+        })
+        .then((result) => {
+          console.log(result, "login=======>");
+          localStorage.setItem("token", result.data.token);
+          navigate("/home");
+        })
+        .catch((err) => {
+          console.log(err);
+          seterror(true);
+          seterrorMsg("Your credentials did not match please try again");
+        });
     } else {
       seterror(true);
       seterrorMsg("please enter valid email and password");
@@ -80,7 +67,6 @@ function Login() {
                   alt="profile"
                 />
               </div>
-
               <div className="mb-3">
                 <input
                   type="text"

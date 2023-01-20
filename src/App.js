@@ -7,6 +7,7 @@ import Administrators from "./components/administrators/Administrators";
 import Countries from "./components/countries/Countries";
 import ProtectedRute from "./components/ProtectedRoute/ProtectedRute";
 import LoginProtectedRoute from "./components/ProtectedRoute/LoginProtectedRoute";
+import UpdatePassword from "./components/administrators/updatePassword/UpdatePassword";
 
 function App() {
   return (
@@ -42,6 +43,14 @@ function App() {
             element={
               <ProtectedRute>
                 <Countries />
+              </ProtectedRute>
+            }
+          />
+          <Route
+            path="/updatepassword/:id"
+            element={
+              <ProtectedRute>
+                <UpdatePassword />
               </ProtectedRute>
             }
           />

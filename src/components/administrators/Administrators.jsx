@@ -5,8 +5,10 @@ import { useEffect } from "react";
 import AddUserModal from "./AdduserModal/AddUserModal";
 import "./Administrators.css";
 import Navbar from "../navbar/Navbar";
+import { useNavigate } from "react-router-dom";
 
 export default function Administrators() {
+  const navigate = useNavigate();
   const [users, setusers] = useState([]);
   const [showAdduserModal, setshowAdduserModal] = useState(false);
   const [addusertoggle, setaddusertoggle] = useState(false);
@@ -55,7 +57,12 @@ export default function Administrators() {
                     <tr>
                       <td>{user.email}</td>
                       <td>
-                        <p className="administrators-update-btn">
+                        <p
+                          className="administrators-update-btn"
+                          onClick={() =>
+                            navigate(`/updatepassword/${user._id}`)
+                          }
+                        >
                           UpdatePassword
                         </p>
                       </td>
