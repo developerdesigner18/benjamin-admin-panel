@@ -5,36 +5,44 @@ import Login from "./components/login/Login";
 import Home from "./components/home/Home";
 import Administrators from "./components/administrators/Administrators";
 import Countries from "./components/countries/Countries";
-// import ProtectedRute from "./components/ProtectedRoute/ProtectedRute";
+import ProtectedRute from "./components/ProtectedRoute/ProtectedRute";
+import LoginProtectedRoute from "./components/ProtectedRoute/LoginProtectedRoute";
 
 function App() {
   return (
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route
+            path="/"
+            element={
+              <LoginProtectedRoute>
+                <Login />
+              </LoginProtectedRoute>
+            }
+          />
           <Route
             path="/home"
             element={
-              // <ProtectedRute>
-              <Home />
-              // </ProtectedRute>
+              <ProtectedRute>
+                <Home />
+              </ProtectedRute>
             }
           />
           <Route
             path="/administrators"
             element={
-              // <ProtectedRute>
-              <Administrators />
-              // </ProtectedRute>
+              <ProtectedRute>
+                <Administrators />
+              </ProtectedRute>
             }
           />
           <Route
             path="/countries"
             element={
-              // <ProtectedRute>
-              <Countries />
-              // </ProtectedRute>
+              <ProtectedRute>
+                <Countries />
+              </ProtectedRute>
             }
           />
         </Routes>

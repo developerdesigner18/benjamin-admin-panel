@@ -13,7 +13,7 @@ export default function Home() {
             <Navbar />
             <div className='home-page'>
                 <h4 className='weloce-text'>Welcome to the yucall coupon administration</h4><br />
-                <Button onClick={() => { navigate('/administrators') }} >Administrators</Button>
+                <Button onClick={() => { navigate('/administrators') }} >Administrators</Button><br /><br />
                 <Button onClick={() => { navigate('/countries') }} >Countries</Button>
             </div>
         </>

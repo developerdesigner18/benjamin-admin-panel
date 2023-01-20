@@ -2,20 +2,52 @@
     margin-left: 30px;
 }
 .login-user-name{
-    border-radius: 20px !important;
+    border-radius: 10px !important;
     padding-left: 20px;
     height: 40px;
+    width: 100%;
+    z-index: 0 !important;
 }
-.login-password-icon{
+.login-password-icon-box{
     margin-left: -50px !important;
     height: 40px;
     border: none;
     background: transparent;
+    z-index: 1;
 }
-.login-btn{
-    width: 200px;
-    margin: 30px 0px;
+.login-password-icon{
+    z-index: 1;
+}
+.login-btn:hover {
+    background: #13274b;
+    color: white;
 }
 .weloce-text{
     margin-top: 40px;
 }
+
+
+.btn-color{
+    background-color: #0e1c36;
+    color: #fff;
+    
+  }
+  
+  .profile-image-pic{
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+  }
+  
+  
+  
+  .cardbody-color{
+    background-color: #ebf2fa;
+  }
+  
+  a{
+    text-decoration: none;
+  }
+  .login-error-msg{
+    color:red
+  }
