@@ -16,7 +16,7 @@ export default function Administrators() {
         setshowAdduserModal(true)
     }
     useEffect(() => {
-        axios.get('http://54.90.77.44:8000/user/listAdminUsers')
+        axios.get(`${process.env.REACT_APP_BASE_URL}/user/listAdminUsers`)
             .then((result) => {
                 setusers(result.data.adminUsersData)
             })

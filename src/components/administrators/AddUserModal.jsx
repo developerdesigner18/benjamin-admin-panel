@@ -6,7 +6,7 @@ export default function AddUserModal({ setaddusertoggle, addusertoggle, setshowA
     const [email, setemail] = useState('')
     const handleAdd = () => {
         console.log(email);
-        axios.post('http://54.90.77.44:8000/user/adminSignUp', { email: email })
+        axios.post(`${process.env.REACT_APP_BASE_URL}/user/adminSignUp`, { email: email })
             .then((result) => {
                 setaddusertoggle(!addusertoggle)
                 setshowAdduserModal(false)

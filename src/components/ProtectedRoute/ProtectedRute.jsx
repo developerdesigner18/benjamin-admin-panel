@@ -9,6 +9,6 @@ export default function ProtectedRute({ children }) {
     }
     else {
         console.log('in else');
-        return <Navigate to="/login"  ></Navigate>
+        return <Navigate to="/"  ></Navigate>
     }
 }
