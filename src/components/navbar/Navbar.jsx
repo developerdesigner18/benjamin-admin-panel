@@ -28,7 +28,8 @@ export default function Navbar() {
         </div>
         <div
           onClick={() => {
-            navigate("/countries");
+            navigate("/");
+            localStorage.removeItem("token");
           }}
           className="navbar-btn"
         >

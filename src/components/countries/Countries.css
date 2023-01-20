@@ -1,0 +1,8 @@
+.countries-page{
+    margin-left: 40px;
+}
+.country-table{
+    width: 70%;
+    height: 500px;
+    overflow-y: scroll
+}

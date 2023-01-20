@@ -51,31 +51,27 @@ export default function Administrators() {
               </tr>
             </thead>
             <tbody>
-              {users.map((user) => {
+              {users.map((user, index) => {
                 return (
-                  <>
-                    <tr>
-                      <td>{user.email}</td>
-                      <td>
-                        <p
-                          className="administrators-update-btn"
-                          onClick={() =>
-                            navigate(`/updatepassword/${user._id}`)
-                          }
-                        >
-                          UpdatePassword
-                        </p>
-                      </td>
-                      <td>
-                        <p
-                          className="administrators-update-btn"
-                          onClick={() => handleDelete(user._id)}
-                        >
-                          Delete
-                        </p>
-                      </td>
-                    </tr>
-                  </>
+                  <tr key={index}>
+                    <td>{user.email}</td>
+                    <td>
+                      <p
+                        className="administrators-update-btn"
+                        onClick={() => navigate(`/updatepassword/${user._id}`)}
+                      >
+                        UpdatePassword
+                      </p>
+                    </td>
+                    <td>
+                      <p
+                        className="administrators-update-btn"
+                        onClick={() => handleDelete(user._id)}
+                      >
+                        Delete
+                      </p>
+                    </td>
+                  </tr>
                 );
               })}
             </tbody>
