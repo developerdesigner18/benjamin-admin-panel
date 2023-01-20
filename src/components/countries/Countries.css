@@ -2,7 +2,8 @@
     margin-left: 40px;
 }
 .country-table{
-    width: 70%;
+    width: 60%;
     height: 500px;
+    margin: auto;
     overflow-y: scroll
 }

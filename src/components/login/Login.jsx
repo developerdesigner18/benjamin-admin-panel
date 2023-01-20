@@ -36,7 +36,7 @@ function Login() {
         .then((result) => {
           console.log(result, "login=======>");
           localStorage.setItem("token", result.data.token);
-          navigate("/home");
+          navigate("/");
         })
         .catch((err) => {
           console.log(err);
@@ -50,74 +50,72 @@ function Login() {
   };
 
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-md-6 offset-md-3">
-          <h2 className="text-center text-dark mt-1">Login Form</h2>
-          <div className="text-center  text-dark">
-            Please login to access the coupon administration
-          </div>
-          <div className="card my-3">
-            <form className="card-body cardbody-color p-lg-5">
-              <div className="text-center">
-                <img
-                  src="https://cdn.pixabay.com/photo/2016/03/31/19/56/avatar-1295397__340.png"
-                  className="img-fluid profile-image-pic img-thumbnail rounded-circle my-3"
-                  width="200px"
-                  alt="profile"
-                />
-              </div>
-              <div className="mb-3">
+    <div className="login-page">
+      <div className="login-container">
+        <h2 className="text-center text-dark mt-1">Login Form</h2>
+        <div className="text-center  text-dark">
+          Please login to access the coupon administration
+        </div>
+        <div className="card my-3">
+          <form className="card-body cardbody-color p-lg-5">
+            <div className="text-center">
+              <img
+                src="images/logo.png"
+                className="img-fluid profile-image-pic img-thumbnail rounded-circle mb-5"
+                width="150px"
+                alt="profile"
+              />
+            </div>
+            <div className="mb-3">
+              <input
+                type="text"
+                className="form-control login-user-name"
+                id="email"
+                onChange={(e) => setemail(e.target.value)}
+                placeholder="Enter email"
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <InputGroup>
                 <input
-                  type="text"
+                  type={values.showPassword ? "text" : "password"}
+                  onChange={handlePasswordChange("password")}
+                  value={values.password}
+                  placeholder="password"
                   className="form-control login-user-name"
-                  id="email"
-                  onChange={(e) => setemail(e.target.value)}
-                  placeholder="Enter email"
+                  id="password"
                   required
                 />
-              </div>
-              <div className="mb-3">
-                <InputGroup>
-                  <input
-                    type={values.showPassword ? "text" : "password"}
-                    onChange={handlePasswordChange("password")}
-                    value={values.password}
-                    placeholder="password"
-                    className="form-control login-user-name"
-                    id="password"
-                    required
-                  />
-                  <InputGroup.Text
-                    id="basic-addon1"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                    className="login-password-icon-box"
-                    required
-                  >
-                    {values.showPassword ? (
-                      <FontAwesomeIcon
-                        icon={faEye}
-                        className="login-password-icon"
-                      />
-                    ) : (
-                      <FontAwesomeIcon icon={faEyeSlash} />
-                    )}
-                  </InputGroup.Text>
-                </InputGroup>
-              </div>
-              <div className="text-center">
-                <button
-                  type="submit"
-                  className="btn btn-color px-5 mb-5 w-100 login-btn"
-                  onClick={handleLogin}
+                <InputGroup.Text
+                  id="basic-addon1"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  className="login-password-icon-box"
+                  required
                 >
-                  Login
-                </button>
-                {error ? <p className="login-error-msg">{errorMsg}</p> : null}
-              </div>
-            </form>
-          </div>
+                  {values.showPassword ? (
+                    <FontAwesomeIcon
+                      icon={faEye}
+                      className="login-password-icon"
+                    />
+                  ) : (
+                    <FontAwesomeIcon icon={faEyeSlash} />
+                  )}
+                </InputGroup.Text>
+              </InputGroup>
+            </div>
+            <div className="text-center">
+              <button
+                type="submit"
+                className="btn btn-color px-5 mb-5 w-100 login-btn"
+                onClick={handleLogin}
+              >
+                Login
+              </button>
+              {error ? <p className="login-error-msg">{errorMsg}</p> : null}
+            </div>
+          </form>
         </div>
       </div>
     </div>

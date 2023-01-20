@@ -5,6 +5,6 @@ export default function ProtectedRute({ children }) {
   if (localStorage.getItem("token")) {
     return children;
   } else {
-    return <Navigate to="/"></Navigate>;
+    return <Navigate to="/login"></Navigate>;
   }
 }

@@ -11,11 +11,11 @@ import UpdatePassword from "./components/administrators/updatePassword/UpdatePas
 
 function App() {
   return (
-    <div>
+    <div className="App">
       <BrowserRouter>
         <Routes>
           <Route
-            path="/"
+            path="/login"
             element={
               <LoginProtectedRoute>
                 <Login />
@@ -23,7 +23,7 @@ function App() {
             }
           />
           <Route
-            path="/home"
+            path="/"
             element={
               <ProtectedRute>
                 <Home />

@@ -38,7 +38,7 @@ export default function Administrators() {
   return (
     <>
       <Navbar />
-      <div className="administrators-page">
+      <div>
         <h4 className="weloce-text">Coupon Administrators</h4>
         <br />
         <div className="administrators-container">
@@ -76,8 +76,10 @@ export default function Administrators() {
               })}
             </tbody>
           </Table>
-          <div className="modal-add-btn">
-            <Button onClick={addUser}>Add</Button>
+          <div className="modal-add-btn-box">
+            <Button onClick={addUser} className="modal-add-btn">
+              Add
+            </Button>
           </div>
         </div>
         <Modal show={showAdduserModal} onHide={handleClose}>

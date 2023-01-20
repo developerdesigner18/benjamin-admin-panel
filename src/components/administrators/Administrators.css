@@ -1,10 +1,13 @@
 .administrators-page{
     margin-left: 40px;
 }
-.modal-add-btn{
+.modal-add-btn-box{
     margin: 20px;
-    display: flex;
-    justify-content: flex-end;
+    /* display: flex;
+    justify-content: flex-end; */
+}
+.modal-add-btn{
+    width: 200px;
 }
 .modal-email-input{
     width: 100%;
@@ -18,6 +21,7 @@
 }
 .administrators-container{
     width: 50%;
+    margin: auto;
 }
 .administrators-update-btn{
     cursor: pointer;

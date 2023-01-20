@@ -1,5 +1,13 @@
 .login-page{
-    margin-left: 30px;
+    /* margin-left: 30px; */
+    display: flex;
+     align-items: center;
+    height: 100vh; 
+}
+.login-container{
+    width: 40%;
+    margin: auto;
+    
 }
 .login-user-name{
     border-radius: 10px !important;
@@ -34,8 +42,8 @@
   }
   
   .profile-image-pic{
-    height: 200px;
-    width: 200px;
+    height: 150px;
+    width: 150px;
     object-fit: cover;
   }
   
@@ -50,4 +58,18 @@
   }
   .login-error-msg{
     color:red
+  }
+  @media only screen and (max-width: 850px){
+    .login-container{
+        width: 60%;
+        margin: auto;
+        
+    }
+  }
+  @media only screen and (max-width: 600px){
+    .login-container{
+        width: 80%;
+        margin: auto;
+        
+    }
   }
