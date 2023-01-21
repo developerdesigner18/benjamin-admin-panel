@@ -15,9 +15,8 @@ export default function Administrators() {
 
   const handleClose = () => setshowAdduserModal(false);
 
-  const addUser = () => {
-    setshowAdduserModal(true);
-  };
+  const addUser = () => setshowAdduserModal(true);
+
   const handleDelete = (userID) => {
     axios
       .delete(`${process.env.REACT_APP_BASE_URL}/user/deleteUser/${userID}`)
@@ -45,6 +44,7 @@ export default function Administrators() {
           <Table bordered hover style={{ textAlign: "center" }}>
             <thead>
               <tr>
+                <th>No.</th>
                 <th>Email</th>
                 <th>UpdatePassword</th>
                 <th>Delete</th>
@@ -54,33 +54,34 @@ export default function Administrators() {
               {users.map((user, index) => {
                 return (
                   <tr key={index}>
+                    <td>{index + 1}</td>
                     <td>{user.email}</td>
                     <td>
-                      <p
+                      <Button
+                        variant="outline-success"
                         className="administrators-update-btn"
                         onClick={() => navigate(`/updatepassword/${user._id}`)}
                       >
                         UpdatePassword
-                      </p>
+                      </Button>
                     </td>
                     <td>
-                      <p
+                      <Button
+                        variant="outline-danger"
                         className="administrators-update-btn"
                         onClick={() => handleDelete(user._id)}
                       >
                         Delete
-                      </p>
+                      </Button>
                     </td>
                   </tr>
                 );
               })}
             </tbody>
           </Table>
-          <div className="modal-add-btn-box">
-            <Button onClick={addUser} className="modal-add-btn">
-              Add
-            </Button>
-          </div>
+          <Button onClick={addUser} className="modal-add-btn">
+            Add
+          </Button>
         </div>
         <Modal show={showAdduserModal} onHide={handleClose}>
           <AddUserModal

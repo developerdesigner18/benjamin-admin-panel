@@ -2,12 +2,13 @@
     margin-left: 40px;
 }
 .modal-add-btn-box{
-    margin: 20px;
-    /* display: flex;
-    justify-content: flex-end; */
+    margin: 10px 20px 20px 20px;
+    display: flex;
+    justify-content: flex-end;
 }
 .modal-add-btn{
     width: 200px;
+
 }
 .modal-email-input{
     width: 100%;

@@ -1,0 +1,44 @@
+.country-modal-row{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 30px;
+    align-items: center;
+}
+.country-modal-row p {
+    margin: 0px;
+}
+.country-text-area{
+    width: 100%;
+}
+.country-text-area:focus{
+    outline: none;
+}
+.country-body{
+    padding: 0px;
+}
+.hr-line{
+    margin: 0px;
+}
+.terms-condition{
+    padding: 20px 30px 10px 30px;
+}
+.cancel-modal{
+    text-align: center;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.427) ;
+    /* width: 400px; */
+    justify-content: center;
+}
+.cancel-modal :first-child{
+    /* width: 400px; */
+    width: fit-content;
+    
+}
+.cancel-heading{
+    margin: auto;
+   
+}
+.clancel-btn{
+    margin: 30px 20px 5px 20px;
+    width: 120px;
+}

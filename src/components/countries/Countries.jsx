@@ -1,25 +1,22 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { Table } from "react-bootstrap";
+import { Button, Modal, Table } from "react-bootstrap";
 import Navbar from "../navbar/Navbar";
-// import Table from "../table/Table";
 import "./Countries.css";
+import EditStatus from "./editStatus/EditStatus";
 
 export default function Countries() {
   const [countryData, setcountryData] = useState([]);
+  const [showModale, setshowModale] = useState(false);
+  const [country, setcountry] = useState();
+  const [toggle, settoggle] = useState(false);
 
-  const columns = [
-    {
-      Header: "name",
-      accessor: "name",
-    },
-    {
-      Header: "dial_code",
-      accessor: "dial_code",
-    },
-    { Header: "status", accessor: "status" },
-  ];
+  const editState = (data) => {
+    setshowModale(true);
+    setcountry(data);
+  };
+
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_BASE_URL}/country/getCountries`, {
@@ -33,7 +30,7 @@ export default function Countries() {
       .catch((err) => {
         console.log("err===>", err);
       });
-  }, []);
+  }, [toggle]);
   return (
     <div>
       <Navbar />
@@ -51,7 +48,8 @@ export default function Countries() {
           >
             <thead>
               <tr>
-                <th>Country</th>
+                <th>No.</th>
+                <th className="header">Country</th>
                 <th>International Code</th>
                 <th>Status</th>
               </tr>
@@ -60,15 +58,37 @@ export default function Countries() {
               {countryData.map((country, index) => {
                 return (
                   <tr key={index}>
+                    <td>{index + 1}</td>
                     <td>{country.name}</td>
                     <td>{country.dial_code}</td>
-                    <td>{country.status}</td>
+                    <td
+                      onClick={() => {
+                        editState(country);
+                      }}
+                    >
+                      <Button
+                        variant={
+                          country.status == "live"
+                            ? "outline-success"
+                            : "outline-primary"
+                        }
+                      >
+                        {country.status}
+                      </Button>
+                    </td>
                   </tr>
                 );
               })}
             </tbody>
           </Table>
-          {/* <Table columns={columns} data={countryData} /> */}
+          <Modal show={showModale} centered>
+            <EditStatus
+              country={country}
+              toggle={toggle}
+              settoggle={settoggle}
+              setshowModale={setshowModale}
+            />
+          </Modal>
         </div>
       </div>
     </div>
