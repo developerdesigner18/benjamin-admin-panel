@@ -6,11 +6,18 @@ import Navbar from "../navbar/Navbar";
 import "./Countries.css";
 import EditStatus from "./editStatus/EditStatus";
 
+// import _ from "lodash";
+import Pagination from "../pagination/Pagination";
+
 export default function Countries() {
   const [countryData, setcountryData] = useState([]);
   const [showModale, setshowModale] = useState(false);
   const [country, setcountry] = useState();
   const [toggle, settoggle] = useState(false);
+
+  const [paginatedData, setpaginatedData] = useState([]);
+  const [currentPage, setcurrentPage] = useState(1);
+  const [pageSize, setpageSize] = useState(10);
 
   const editState = (data) => {
     setshowModale(true);
@@ -26,11 +33,13 @@ export default function Countries() {
       })
       .then((result) => {
         setcountryData(result.data.countriesData);
+        setpaginatedData(result.data.countriesData.slice(0, pageSize));
       })
       .catch((err) => {
         console.log("err===>", err);
       });
-  }, [toggle]);
+  }, [toggle, pageSize]);
+
   return (
     <div>
       <Navbar />
@@ -55,10 +64,11 @@ export default function Countries() {
               </tr>
             </thead>
             <tbody>
-              {countryData.map((country, index) => {
+              {paginatedData?.map((country, index) => {
+                // const index = (currentPage-1 )* pageSize
                 return (
                   <tr key={index}>
-                    <td>{index + 1}</td>
+                    <td>{(currentPage - 1) * pageSize + 1 + index}</td>
                     <td>{country.name}</td>
                     <td>{country.dial_code}</td>
                     <td
@@ -68,7 +78,7 @@ export default function Countries() {
                     >
                       <Button
                         variant={
-                          country.status == "live"
+                          country.status === "live"
                             ? "outline-success"
                             : "outline-primary"
                         }
@@ -81,6 +91,17 @@ export default function Countries() {
               })}
             </tbody>
           </Table>
+
+          <Pagination
+            currentPage={currentPage}
+            // pages={pages}
+            setcurrentPage={setcurrentPage}
+            setpaginatedData={setpaginatedData}
+            countryData={countryData}
+            pageSize={pageSize}
+            setpageSize={setpageSize}
+          />
+
           <Modal show={showModale} centered>
             <EditStatus
               country={country}
