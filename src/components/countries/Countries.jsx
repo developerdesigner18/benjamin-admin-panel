@@ -33,7 +33,12 @@ export default function Countries() {
       })
       .then((result) => {
         setcountryData(result.data.countriesData);
-        setpaginatedData(result.data.countriesData.slice(0, pageSize));
+        setpaginatedData(
+          result.data.countriesData.slice(
+            (currentPage - 1) * pageSize,
+            (currentPage - 1) * pageSize + pageSize
+          )
+        );
       })
       .catch((err) => {
         console.log("err===>", err);
