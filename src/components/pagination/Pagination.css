@@ -7,3 +7,21 @@
 .pagination-container p {
     margin: 0px;
 }
+.page-number-box{
+    display: flex;
+    align-items: center;
+}
+.pagenumber-input{
+    width: 70px;
+}
+.page-number-input-label{
+    padding-right: 10px;
+}
+.page-size-box{
+    display: flex;
+    align-items: center;
+}
+.page-size-dropdown{
+    width: 90px;
+    margin-left: 10px;
+}

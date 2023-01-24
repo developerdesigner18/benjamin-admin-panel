@@ -5,7 +5,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import _ from "lodash";
 import React from "react";
-import { Dropdown, DropdownButton } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import "./Pagination.css";
 
 export default function Pagination({
@@ -41,26 +41,6 @@ export default function Pagination({
       paginate(currentPage - 1);
     }
   };
-  const handlePageNumber = (value) => {
-    // if (!value >= -1) {
-    //   setcurrentPage(1);
-    //   paginate(1);
-    // } else {
-    //     if (!value <= pageCount) {
-    //       setcurrentPage(pageCount);
-    //       paginate(pageCount);
-    //     } else {
-    //   setcurrentPage(value);
-    paginate(value);
-    //     }
-    // }
-  };
-
-  const handlePageSize = (value) => {
-    if (value > 0) {
-      setpageSize(value);
-    }
-  };
 
   return (
     <div>
@@ -72,16 +52,33 @@ export default function Pagination({
             {currentPage} of {pageCount}
           </p>
           <FontAwesomeIcon icon={faChevronCircleRight} onClick={handleNext} />
-          <input
-            type="number"
-            onChange={(e) => handlePageNumber(e.target.value)}
-            value={currentPage}
-          />
-          <input
-            type="number"
-            onChange={(e) => handlePageSize(e.target.value)}
-            value={pageSize}
-          />
+          <div className="page-number-box">
+            <label className="page-number-input-label">Page number : </label>
+
+            <Form.Select
+              onChange={(e) => paginate(Number(e.target.value))}
+              className="page-size-dropdown"
+              value={currentPage}
+            >
+              {pages
+                ? pages?.map((page) => {
+                    return <option value={page}>{page}</option>;
+                  })
+                : null}
+            </Form.Select>
+          </div>
+
+          <div className="page-size-box">
+            <label>Page Size : </label>
+            <Form.Select
+              onChange={(e) => setpageSize(Number(e.target.value))}
+              className="page-size-dropdown"
+            >
+              <option value="10">10</option>
+              <option value="20">20</option>
+              <option value="30">30</option>
+            </Form.Select>
+          </div>
         </div>
       </nav>
     </div>
