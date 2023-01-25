@@ -4,7 +4,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import _ from "lodash";
-import React from "react";
+import React, { useEffect } from "react";
 import { Form } from "react-bootstrap";
 import "./Pagination.css";
 
@@ -18,8 +18,17 @@ export default function Pagination({
   setpageSize,
 }) {
   var pageCount =
-    countryData.length > 0 ? Math.ceil(countryData.length / pageSize) : 0;
+    countryData.length > 0 ? Math.ceil(countryData?.length / pageSize) : 0;
   const pages = pageCount ? _.range(1, pageCount + 1) : 0;
+  useEffect(() => {
+    console.log("hellllo");
+    setpaginatedData(
+      countryData.slice(
+        (currentPage - 1) * pageSize,
+        (currentPage - 1) * pageSize + pageSize
+      )
+    );
+  }, [countryData]);
 
   const paginate = (pageNo) => {
     setcurrentPage(pageNo);
@@ -47,11 +56,13 @@ export default function Pagination({
       <nav>
         {/* <ul className="pagination"> */}
         <div className="pagination-container">
-          <FontAwesomeIcon icon={faChevronCircleLeft} onClick={handleBack} />
-          <p>
-            {currentPage} of {pageCount}
-          </p>
-          <FontAwesomeIcon icon={faChevronCircleRight} onClick={handleNext} />
+          <div className="current-page-number-box">
+            <FontAwesomeIcon icon={faChevronCircleLeft} onClick={handleBack} />
+            <p>
+              {currentPage} of {pageCount}
+            </p>
+            <FontAwesomeIcon icon={faChevronCircleRight} onClick={handleNext} />
+          </div>
           <div className="page-number-box">
             <label className="page-number-input-label">Page number : </label>
 

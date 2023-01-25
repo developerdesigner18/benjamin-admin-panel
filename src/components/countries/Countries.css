@@ -2,8 +2,42 @@
     margin-left: 40px;
 }
 .country-table{
-    width: 60%;
-    height: 500px;
+    max-height: 350px;
     margin: auto;
-    overflow-y: scroll
+    overflow-y: scroll;
+    border: 1px solid rgb(224, 224, 224);
+}
+.main-country-table{
+    width: 60%;
+    margin: auto;
+    
+}
+.country-table::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+.table-search-box{
+    padding: 15px;
+    border: 1px solid rgb(224, 224, 224);
+    border-bottom: 0px;
+    display: flex;
+    align-items: center;
+}
+.sreach-btn{
+    padding:12px ;
+    margin-left: -50px;
+    border-radius: 10px;
+}
+@media only screen and (max-width: 700px){
+    .main-country-table{
+        width: 80%;
+        margin: auto;
+        
+    }
+  }
+@media only screen and (max-width: 500px){
+.main-country-table{
+    width: 100%;
+    margin: auto;
+    
+}
 }
